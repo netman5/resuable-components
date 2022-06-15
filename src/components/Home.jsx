@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import Container from './Container';
-import Input from './Input';
+import Input from './Form/Input';
+import FormInput from './Form/FormInput';
 import Table from './Tasks/Table';
 
 const Home = () => {
-  const name = 'John';
+  const intial = {
+    name: '',
+    surname: '',
+    email: '',
+    phone: '',
+  };
+  const [inputValue, setInputValue] = useState(intial);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue, [name]: value,
+    });
+  };
   const data = [
-    { id: 1, title: 'Task 1', description: 'Task 1 description' },
-    { id: 2, title: 'Task 2', description: 'Task 2 description' },
-    { id: 3, title: 'Task 3', description: 'Task 3 description' },
+    { id: '1', title: 'Task 1', description: 'Task 1 description' },
+    { id: '2', title: 'Task 2', description: 'Task 2 description' },
+    { id: '3', title: 'Task 3', description: 'Task 3 description' },
   ];
+
   return (
     <div>
       <Container className="container">
         <h1>Home</h1>
-        {name}
         <Button
           buttonText="testing"
           className="h-10 px-6 font-semibold rounded-md bg-sky-500 text-white"
@@ -23,8 +37,53 @@ const Home = () => {
           onClick={() => console.log('hello')}
           loading={false}
         />
-        <Input type="text" placeholder="Enter Email" />
+        <Input
+          label="Email"
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          disabled={false}
+          value={inputValue.email}
+          onChange={handleChange}
+          required
+          className="appearance-none block min-w-max px-3 py-2 border border-gray-300 rounded-md placeholder-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+        />
+
+        <Input
+          label="Phone"
+          type="email"
+          name="phone"
+          placeholder="Enter Email"
+          disabled={false}
+          value={inputValue.phone}
+          onChange={handleChange}
+          required
+          className="appearance-none block min-w-max px-3 py-2 border border-gray-300 rounded-md placeholder-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+        />
+        <FormInput
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          value={inputValue.name}
+          onChange={handleChange}
+        />
+        <FormInput
+          type="text"
+          name="surname"
+          placeholder="Enter Surname"
+          value={inputValue.surname}
+          onChange={handleChange}
+        />
         <Table data={data} />
+        <div>
+          <p>{inputValue.email}</p>
+          <p>{`${inputValue.name} ${inputValue.surname}`}</p>
+          <p>
+            Contact detail:
+            {inputValue.phone}
+
+          </p>
+        </div>
       </Container>
     </div>
   );
