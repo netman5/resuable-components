@@ -4,6 +4,7 @@ import Container from './Container';
 import Input from './Form/Input';
 import FormInput from './Form/FormInput';
 import Table from './Tasks/Table';
+import Buttons from './Form/Button';
 
 const Home = () => {
   const intial = {
@@ -74,6 +75,11 @@ const Home = () => {
           value={inputValue.surname}
           onChange={handleChange}
         />
+        <div className="flex w-80 justify-between">
+          <Buttons size="h-10 px-6 mt-2 w-55" variant="bg-green-500 text-white rounded-md font-semibold" type="button">Sucess</Buttons>
+          <Buttons size="h-10 px-6 mt-2 w-55" variant="bg-red-500 text-white rounded-md font-semibold" type="button">Error</Buttons>
+          <Buttons size="h-10 px-6 mt-2 w-55" variant="bg-gray-500 text-white rounded-md font-semibold" type="button">Warning</Buttons>
+        </div>
         <Table data={data} />
         <div>
           <p>{inputValue.email}</p>
