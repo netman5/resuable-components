@@ -19,10 +19,11 @@ const Button = ({
   return (
     <div className="mt-6">
       <button
-        type={type}
+        type={type ? 'button' : 'submit'}
         onClick={handleClick}
         className={className}
-        disabled={loading}>
+        disabled={loading}
+      >
 
         {loading ? 'Loading....' : buttonText}
       </button>
