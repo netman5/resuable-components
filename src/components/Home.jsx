@@ -5,6 +5,7 @@ import Input from './Form/Input';
 import FormInput from './Form/FormInput';
 import Table from './Tasks/Table';
 import Buttons from './Form/Button';
+import ConfirmModal from './Modals/ConfirmModal';
 
 const Home = () => {
   const intial = {
@@ -13,6 +14,7 @@ const Home = () => {
     email: '',
     phone: '',
   };
+  const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState(intial);
 
   const handleChange = (e) => {
@@ -27,15 +29,24 @@ const Home = () => {
     { id: '3', title: 'Task 3', description: 'Task 3 description' },
   ];
 
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
+      {isOpen && <ConfirmModal message="are you sure?" isOpen={isOpen} openModal={openModal} closeModal={closeModal} />}
       <Container className="container">
         <h1>Home</h1>
         <Button
           buttonText="testing"
           className="h-10 px-6 font-semibold rounded-md bg-sky-500 text-white"
           type="button"
-          onClick={() => console.log('hello')}
+          onClick={() => openModal()}
           loading={false}
         />
         <Input
