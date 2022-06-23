@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import Button from './Button';
 import Container from './Container';
@@ -6,6 +7,8 @@ import FormInput from './Form/FormInput';
 import Table from './Tasks/Table';
 import Buttons from './Form/Button';
 import ConfirmModal from './Modals/ConfirmModal';
+// import PrimaryButton from './Form/PrimaryButton';
+import NavBar from './NavBar/NavBar';
 
 const Home = () => {
   const intial = {
@@ -39,6 +42,7 @@ const Home = () => {
 
   return (
     <div>
+      <NavBar />
       {isOpen && <ConfirmModal message="are you sure?" isOpen={isOpen} openModal={openModal} closeModal={closeModal} />}
       <Container className="container">
         <h1>Home</h1>
@@ -101,6 +105,8 @@ const Home = () => {
 
           </p>
         </div>
+
+        {/* <PrimaryButton buttonText="Submit" height="20px" width="50px" border="border" background="bg-sky-200" /> */}
       </Container>
     </div>
   );
