@@ -7,8 +7,7 @@ import FormInput from './Form/FormInput';
 import Table from './Tasks/Table';
 import Buttons from './Form/Button';
 import ConfirmModal from './Modals/ConfirmModal';
-// import PrimaryButton from './Form/PrimaryButton';
-import NavBar from './NavBar/NavBar';
+// import PrimaryButton from './Form/PrimaryButton'
 
 const Home = () => {
   const intial = {
@@ -17,6 +16,7 @@ const Home = () => {
     email: '',
     phone: '',
   };
+
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState(intial);
 
@@ -42,10 +42,8 @@ const Home = () => {
 
   return (
     <div>
-      <NavBar />
       {isOpen && <ConfirmModal message="are you sure?" isOpen={isOpen} openModal={openModal} closeModal={closeModal} />}
       <Container className="container">
-        <h1>Home</h1>
         <Button
           buttonText="testing"
           className="h-10 px-6 font-semibold rounded-md bg-sky-500 text-white"
